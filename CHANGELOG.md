@@ -1,11 +1,7 @@
-## 0.1.0 (May 30, 2014)
+## 0.1.1 (Jan 8, 2015)
 
-* Support callables for all configuration options
+* [bobbrez] Add module for convience adding throttles
 
-  *Kevin Yank*
+## 0.1.0 (Jan 8, 2015)
 
-## 0.0.1 (December 3, 2013)
-
-* Initial release.
-
-  *Blake Thomas*
+* [bobbrez] Initial project setup including queue throttling base on throttles
