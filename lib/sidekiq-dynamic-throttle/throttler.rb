@@ -1,7 +1,8 @@
 module Sidekiq::DynamicThrottle::Throttler
   module ClassMethods
-    def sidekiq_throttle_queue(*queues)
-      Sidekiq::DynamicThrottle.register_throttle self, queues
+    def sidekiq_throttle(queue: queue, throttler: nil, **opts)
+      throttler ||= self
+      Sidekiq::DynamicThrottle.register_throttle throttler, queue
     end
   end
 
