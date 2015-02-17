@@ -11,7 +11,6 @@ module Sidekiq::DynamicThrottle
   end
 
   def self.register_throttle(throttle, *queues)
-    queues.flatten!
-    queues.each { |queue| throttles['queue:' + queue.to_s] << throttle }
+    queues.flatten.each { |queue| throttles["queue:#{queue}"] << throttle }
   end
 end

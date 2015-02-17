@@ -1,3 +1,6 @@
+require 'celluloid'
+require 'sidekiq/fetch'
+
 module Sidekiq::DynamicThrottle
   class Fetch < Sidekiq::BasicFetch
     def retrieve_work
