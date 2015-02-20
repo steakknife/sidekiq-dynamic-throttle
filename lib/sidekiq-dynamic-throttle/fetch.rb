@@ -1,5 +1,6 @@
 require 'celluloid'
 require 'sidekiq/fetch'
+require 'sidekiq-dynamic-throttle/throttles'
 
 module Sidekiq::DynamicThrottle
   class Fetch < Sidekiq::BasicFetch
@@ -12,10 +13,7 @@ module Sidekiq::DynamicThrottle
 
     def unthrottled_queues
       queues_cmd.reject do |queue|
-        throttles = Sidekiq::DynamicThrottle.throttles[queue]
-        next if throttles.blank?
-
-        throttles.find { |throttle| throttle.throttled? }
+        throttles[queue].find(&:throttled?)
       end
     end
   end
