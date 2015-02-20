@@ -13,7 +13,7 @@ module Sidekiq::DynamicThrottle
 
     def unthrottled_queues
       queues_cmd.reject do |queue|
-        throttles[queue].find(&:throttled?)
+        Sidekiq::DynamicThrottle.throttles[queue].find(&:throttled?)
       end
     end
   end
